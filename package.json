@@ -1,0 +1,29 @@
+{
+  "name": "template-engine-example",
+  "version": "1.0.0",
+  "description": "This is a small example for a template engine",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lets-go": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickelswitte/template-engine-example.git"
+  },
+  "author": "Nickels Witte",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickelswitte/template-engine-example/issues"
+  },
+  "homepage": "https://github.com/nickelswitte/template-engine-example#readme",
+  "dependencies": {
+    "bulma": "^0.9.3",
+    "eta": "^1.12.3",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
