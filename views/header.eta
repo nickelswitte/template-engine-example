@@ -7,6 +7,3 @@
 
 <!-- Include Bulma -->
 <link href="bulma.min.css" rel="stylesheet" type="text/css">
-<link href="css/all.min.css" rel="stylesheet" type="text/css">
-<link href="css/main.css" rel="stylesheet" type="text/css">
-<script src="js/clientScript.js"></script>
