@@ -1,8 +1,15 @@
 
 import express from 'express';
-// Node File Interaction
-import fs from 'fs';
 import * as eta from "eta"
+import fs from "fs";
+import MarkdownIt from 'markdown-it';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+var md = new MarkdownIt();
+
 
 const app = express();
 const port = 80;
@@ -15,9 +22,9 @@ app.set('views', './views');
 
 
 app.use(express.json());
+app.use(express.static('node_modules/bulma/css'));
 app.use(express.static('public'));
 // Include static files of bulma 
-app.use(express.static('node_modules/bulma/css'));
 
 
 // Serve the index page
@@ -64,10 +71,38 @@ let data = {
         },
     ]
 }
-// Serve the index page
+
+
 app.get('/i', (req, res) => {
     res.render("images", data)
 })
+
+// Serve the index page
+app.get('/m/:path', (req, res) => {
+
+    let pathToFile = __dirname + '\\public\\md\\' + req.params.path + '.md';
+
+    console.log(pathToFile);
+    
+
+    fs.readFile(pathToFile, 'utf8' , (err, data) => {
+        if (err) {
+            console.error(err)
+            return
+        }
+
+        let markdownParsed = md.render(data);
+
+        // console.log(data)
+        res.render("markdown", {
+            markdown: markdownParsed,
+            title: "Markdown Render",
+            subtitle: "This is auto-generated from Markdown"
+        });
+    });
+    
+});
+
 
 
 /**

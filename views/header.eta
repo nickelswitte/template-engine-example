@@ -6,4 +6,4 @@
 <meta name="keywords" content="keywords,here">
 
 <!-- Include Bulma -->
-<link href="bulma.min.css" rel="stylesheet" type="text/css">
+<link href="/bulma.min.css" rel="stylesheet" type="text/css">

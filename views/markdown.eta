@@ -1,0 +1,6 @@
+<% layout('./layout01', it) %>
+
+<% console.log(it.markdown) %>
+<div class="content">
+    <%~ it.markdown %>
+</div>

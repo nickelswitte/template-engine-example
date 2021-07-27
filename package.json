@@ -21,7 +21,8 @@
   "dependencies": {
     "bulma": "^0.9.3",
     "eta": "^1.12.3",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "markdown-it": "^12.1.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
