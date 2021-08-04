@@ -3,12 +3,13 @@ import express from 'express';
 import * as eta from "eta"
 import fs from "fs";
 import MarkdownIt from 'markdown-it';
+import taskLists from 'markdown-it-task-lists';
 import path from 'path';
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-var md = new MarkdownIt();
+var md = new MarkdownIt().use(taskLists);
 
 
 const app = express();
@@ -23,6 +24,7 @@ app.set('views', './views');
 
 app.use(express.json());
 app.use(express.static('node_modules/bulma/css'));
+app.use(express.static('node_modules/@creativebulma/bulma-divider/dist'));
 app.use(express.static('public'));
 // Include static files of bulma 
 
@@ -77,19 +79,47 @@ app.get('/i', (req, res) => {
     res.render("images", data)
 })
 
+let pathElements = {
+    path: [
+        'A',
+        'random',
+        'path'
+    ]
+}
+
 // Serve the index page
-app.get('/m/:path', (req, res) => {
+app.get('/m/:filepath(([a-zA-Z0-9]+(\/)?)*)', (req, res, next) => {
 
-    let pathToFile = __dirname + '\\public\\md\\' + req.params.path + '.md';
+    var path = "";
 
-    console.log(pathToFile);
+    // check for the path
+    if (typeof req.params[0] !== 'undefined') {
+        path += req.params[0];
+    } 
+
+    // Build it
+    path += req.params[2];
+
+    //console.log(path);
+    //console.log(req.params);
+
+    let pathToFile = __dirname + '\\public\\md\\' + path + '.md';
+
+    // console.log(pathToFile);
     
 
     fs.readFile(pathToFile, 'utf8' , (err, data) => {
         if (err) {
-            console.error(err)
-            return
+            console.error("FS Error" + err);
+            return;
         }
+
+        if (typeof data !== 'string') {
+            return;
+        }
+
+        let pathForBreadcrumb = path.split('\/');
+        
 
         let markdownParsed = md.render(data);
 
@@ -97,11 +127,19 @@ app.get('/m/:path', (req, res) => {
         res.render("markdown", {
             markdown: markdownParsed,
             title: "Markdown Render",
-            subtitle: "This is auto-generated from Markdown"
+            subtitle: "This is auto-generated from Markdown",
+            breadcrumb: pathForBreadcrumb
         });
     });
     
 });
+
+app.get('/t', (req, res) => {
+    res.render("tiles", {
+        title: 'Tiles Example',
+        subtitle: 'How tiles can be used for nice things'
+    })
+})
 
 
 

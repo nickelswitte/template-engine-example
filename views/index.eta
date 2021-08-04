@@ -9,6 +9,10 @@
         <a href="http://localhost/i">
             <button class="button is-light">Images</button>
         </a>
+
+        <a onclick="document.getElementById('modalContainer').classList.add('is-active')">
+            <button class="button is-light">Test Image Modal</button>
+        </a>
     </div>
 
     <div class="block">
@@ -21,6 +25,18 @@
         Dessert croissant liquorice jelly-o topping caramels jujubes pastry. Liquorice fruitcake muffin cookie pie marshmallow candy I love soufflé. Toffee croissant topping cheesecake. Dragée halvah I love candy I love pastry powder. Tootsie roll sesame snaps apple pie fruitcake. Marzipan I love chupa chups powder ice cream. Biscuit I love powder I love pastry. Pie icing lollipop caramels cheesecake cupcake I love danish bear claw. Candy canes chupa chups chupa chups apple pie apple pie cotton candy tiramisu. Brownie gummies macaroon topping tootsie roll I love dessert cake.
 
         Sesame snaps macaroon soufflé cotton candy donut. Dessert bear claw candy canes topping gingerbread marzipan gummi bears cookie. Jelly pie biscuit gummi bears jujubes I love liquorice cookie. Sweet tootsie roll cupcake icing jelly beans tiramisu sesame snaps. Tart chupa chups jelly beans. Cake jelly biscuit.
+    </div>
+
+    
+
+    <div class="modal" id="modalContainer">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <p class="image is-4by3">
+            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="">
+            </p>
+        </div>
+        <button class="modal-close is-large" aria-label="close" onclick="document.getElementById('modalContainer').classList.remove('is-active')"></button>
     </div>
 
 </div>
