@@ -79,13 +79,27 @@ app.get('/i', (req, res) => {
     res.render("images", data)
 })
 
-let pathElements = {
-    path: [
-        'A',
-        'random',
-        'path'
-    ]
-}
+app.get('/ig', (req, res) => {
+
+    const testFolder = './public/img/';
+    
+
+    fs.readdir(testFolder, (err, files) => {
+        console.log(files);
+
+        let data = {
+            imagePaths: files,
+            title: "Matthies' Bilder",
+            subtitle: "Eine Auswahl"
+        }
+        
+        res.render("images2", data);
+        
+    });
+
+    
+});
+
 
 // Serve the index page
 app.get('/m/:filepath(([a-zA-Z0-9]+(\/)?)*)', (req, res, next) => {
@@ -140,6 +154,17 @@ app.get('/t', (req, res) => {
         subtitle: 'How tiles can be used for nice things'
     })
 })
+
+app.get('/p', (req, res) => {
+    res.render("Password", {
+        title: 'Secret Password Example',
+        subtitle: 'Hidden entrance'
+    })
+})
+
+app.post('/pw', (req, res) => {
+    console.log(req.body.value);
+});
 
 
 

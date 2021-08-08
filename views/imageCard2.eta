@@ -1,0 +1,9 @@
+<div class="block">
+    <div class="card">
+        <div class="card-image">
+            <figure class="image">
+            <img src="/img/<%= it.path %>" alt="Placeholder image">
+            </figure>
+        </div>
+    </div>
+</div>
