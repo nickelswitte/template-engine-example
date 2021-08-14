@@ -65,6 +65,8 @@ document.addEventListener('keydown', function(e) {
         keys.length = 0;
 
 
+    } if (e.keyCode == 8) {
+        keys.length = 0;
     } else {
 
         keys.push(e.keyCode);
