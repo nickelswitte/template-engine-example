@@ -1,2 +1,7 @@
 @import '/bulma.min.css';
 @import '/bulma-divider.min.css';
+
+img {
+    max-height: 100%;
+    display: block; /* remove extra space below image */
+}

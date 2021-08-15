@@ -81,19 +81,19 @@ app.get('/i', (req, res) => {
 
 app.get('/ig', (req, res) => {
 
-    const testFolder = './public/img/';
+    const testFolder = './public/img/bornholm/';
     
 
     fs.readdir(testFolder, (err, files) => {
         console.log(files);
 
         let data = {
-            imagePaths: files,
-            title: "Matthies' Bilder",
-            subtitle: "Eine Auswahl"
+            pathPrefix: "/img/bornholm/",
+            imageNames: files,
+            title: "Bornholm 2021"
         }
         
-        res.render("images2", data);
+        res.render("imageCards/images-new", data);
         
     });
 
