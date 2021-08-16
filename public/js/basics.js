@@ -25,3 +25,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    var imgs = document.getElementsByClassName('zoomable');
+
+    console.log("!");
+    console.log(imgs);
+
+    for (let img of imgs) {
+        img.setAttribute("id", "zoom-background");
+    }
+
+});

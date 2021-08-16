@@ -25,6 +25,7 @@ app.set('views', './views');
 app.use(express.json());
 app.use(express.static('node_modules/bulma/css'));
 app.use(express.static('node_modules/@creativebulma/bulma-divider/dist'));
+app.use(express.static('node_modules/medium-zoom/dist'));
 app.use(express.static('public'));
 // Include static files of bulma 
 
