@@ -91,7 +91,8 @@ app.get('/ig', (req, res) => {
         let data = {
             pathPrefix: "/img/bornholm/",
             imageNames: files,
-            title: "Bornholm 2021"
+            title: "Bornholm 2021",
+            subtitle: "Eine Reise auf die Ostseeinsel"
         }
         
         res.render("imageCards/images-new", data);
